@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 
 namespace LinqExamples
 {
@@ -90,10 +92,27 @@ namespace LinqExamples
                 //Dynfilter("GenreId", "10");
                 //Console.WriteLine();
                 //Dynfilter("ArtistId", "248");
-                
-                
+
+
                 ///Using SubQuery
-                
+
+
+                ///DbFunctions - Generic for all Dbs                
+                var artists = from a in Db.Artists
+                              where DbFunctions.Reverse(a.Name).Count() > 10
+                              select a;
+
+                ///SqlFunctions
+                var albums = from a in Db.Albums
+                             where SqlFunctions.IsDate(a.AlbumArtUrl) == 1
+                             select a;
+
+                ///Concept of Iqueryable
+                var artistwitha = from a in Db.Artists
+                                  select a;
+
+                var aresult = GetNameswithA(artistwitha);
+
                 Console.ReadKey();
             }
             catch (Exception)
@@ -102,6 +121,11 @@ namespace LinqExamples
                 //throw;
             }
             
+        }
+
+        static IQueryable<Artist> GetNameswithA(IQueryable<Artist> res)
+        {
+            return res.Where(a => a.Name.StartsWith("A", false, null));
         }
 
         static void Dynfilter(string Col, string val)

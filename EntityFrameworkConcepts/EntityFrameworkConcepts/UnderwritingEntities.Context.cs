@@ -10,9 +10,11 @@
 namespace EntityFrameworkConcepts
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Data.Entity.Validation;
+
     public partial class UnderwritingEntitiesContainer : DbContext
     {
         public UnderwritingEntitiesContainer()
@@ -26,5 +28,10 @@ namespace EntityFrameworkConcepts
         }
     
         public virtual DbSet<header> headers { get; set; }
+
+        protected override DbEntityValidationResult ValidateEntity(DbEntityEntry entityEntry, IDictionary<object, object> items)
+        {
+            return base.ValidateEntity(entityEntry, items);
+        }
     }
 }
