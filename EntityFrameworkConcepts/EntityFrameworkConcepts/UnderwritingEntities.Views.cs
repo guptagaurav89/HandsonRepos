@@ -128,11 +128,11 @@ namespace Edm_EntityMappingGeneratedViews
         {
             return new DbMappingView(@"
     SELECT VALUE -- Constructing headers
-        [UnderwritingEntities.header](T1.header_PolicyReference, T1.header_HeaderId)
+        [UnderwritingEntities.header](T1.header_HeaderId, T1.header_PolicyReference)
     FROM (
         SELECT 
-            T.PolicyReference AS header_PolicyReference, 
             T.HeaderId AS header_HeaderId, 
+            T.PolicyReference AS header_PolicyReference, 
             True AS _from0
         FROM UnderwritingEntitiesStoreContainer.header AS T
     ) AS T1");

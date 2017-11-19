@@ -19,9 +19,8 @@ namespace EntityFrameworkConcepts
         {
             this.claimHeaders = new HashSet<claimHeader>();
         }
-    
-        public string PolicyReference { get; set; }
         public int HeaderId { get; set; }
+        public string PolicyReference { get; set; }        
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<claimHeader> claimHeaders { get; set; }

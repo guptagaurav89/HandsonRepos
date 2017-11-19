@@ -55,9 +55,9 @@
         <EntityType Name="header">
           <Key>            
             <PropertyRef Name="HeaderId" />
-          </Key>          
-          <Property Name="PolicyReference" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          </Key>
           <Property Name="HeaderId" Type="Int32" Nullable="false" />
+          <Property Name="PolicyReference" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="claimHeaders" Relationship="UnderwritingEntities.FK__claimHead__heade__36B12243" FromRole="header" ToRole="claimHeader" />
         </EntityType>
         <EntityType Name="claimHeader">

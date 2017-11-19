@@ -23,7 +23,7 @@ namespace EntityFrameworkConcepts
 
             using (UnderwritingEntitiesContainer db = new UnderwritingEntitiesContainer())
             {
-                db.Database.Log = Console.WriteLine;
+                //db.Database.Log = Console.WriteLine;
 
                 ////use Db table name for Sqlquery
                 ////tightly coupled code
@@ -35,6 +35,11 @@ namespace EntityFrameworkConcepts
                 //}
 
                 var objectContext = (db as IObjectContextAdapter).ObjectContext;
+
+                RunUncompiledQuery(objectContext);
+
+                RunCompiledQuery();
+
                 //Use EntitySql
                 //strongly typed
                 using (EntityConnection connection = objectContext.Connection as EntityConnection)
@@ -44,10 +49,10 @@ namespace EntityFrameworkConcepts
                     cmd.CommandText = "Select value header from UnderwritingEntitiesContainer.headers as header";
 
                     EntityDataReader dr = cmd.ExecuteReader(CommandBehavior.SequentialAccess);
-                    while(dr.Read())
+                    while (dr.Read())
                     {
-                        Console.WriteLine("id " + dr[0]);
-                        Console.WriteLine("value " + dr[1]);
+                        Console.WriteLine("id " + dr["HeaderId"]);
+                        Console.WriteLine("value " + dr["PolicyReference"]);
                     }
 
 
@@ -61,9 +66,51 @@ namespace EntityFrameworkConcepts
                     connection.Close();
                 }
 
-               
+
             }
-                Console.ReadKey();
+            Console.ReadKey();
+        }
+
+        private static void RunUncompiledQuery(ObjectContext objectContext)
+        {
+            var headerNocache = objectContext.CreateObjectSet<header>();
+            headerNocache.EnablePlanCaching = false;
+
+            var watch = new Stopwatch();
+            long totalticks = 0;
+
+            headerNocache.Include(x => x.claimHeaders).Where(x => x.HeaderId < 10).ToList();
+
+            for (var i = 0; i < 10; i++)
+            {
+                watch.Restart();
+                headerNocache.Include(x => x.claimHeaders).Where(x => x.HeaderId == i).ToList();
+                watch.Stop();
+                totalticks += watch.ElapsedTicks;
+                Console.WriteLine("Not Compiled: {0} : {1}", i, watch.ElapsedTicks);
+            }
+            Console.WriteLine("Average ticks without compiling " + totalticks / 10);
+        }
+
+        private static void RunCompiledQuery()
+        {
+            using (UnderwritingEntitiesContainer dbContext = new UnderwritingEntitiesContainer())
+            {
+                var watch = new Stopwatch();
+                long totalticks = 0;
+
+                dbContext.headers.Include(x => x.claimHeaders).Where(x => x.HeaderId < 10).ToList();
+
+                for (var i = 0; i < 10; i++)
+                {
+                    watch.Restart();
+                    dbContext.headers.Include(x => x.claimHeaders).Where(x => x.HeaderId == i).ToList();
+                    watch.Stop();
+                    totalticks += watch.ElapsedTicks;
+                    Console.WriteLine("Compiled: {0} : {1}", i, watch.ElapsedTicks);
+                }
+                Console.WriteLine("Average ticks with compiling " + totalticks / 10);
+            }
         }
 
         private static void EF_concurrencyfeatures()
