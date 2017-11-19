@@ -1,0 +1,76 @@
+﻿@model KnockoutSample.ViewModel.Person
+@using KnockoutSample.Helper
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts{
+    <script src="~/App/Person.js"></script>
+    <script type="text/javascript">
+        Person.SaveUrl = '@Url.Action("SavePersonDetails", "Home")';
+        Person.ViewModel = ko.mapping.fromJS(@Html.Raw(Json.Encode(Model)));
+        Person.Countries = @Html.Raw(Json.Encode(ViewBag.Countries));
+        // This is required because, we are holding the collection in ViewBag. If it is wrapped in ViewModel, this line is not required.
+    </script>
+}
+<h2>Index</h2>
+
+<form>
+    <div class="mainWrapper" data-bind="visible: Person.showPersonDetails">
+        <table>
+            <tr>
+                <td>Id : 
+                </td>
+                <td>
+                    @Html.ObservableControlFor(model => model.Id, ControlTypeConstants.Html5NumberInput)
+                </td>
+            </tr>
+            <tr>
+                <td>Name :
+                </td>
+                <td>
+                    @Html.ObservableControlFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <td>Date Of Birth :
+                </td>
+                <td>
+                    @Html.ObservableControlFor(model => model.DateOfBirth, ControlTypeConstants.JqueryUIDateInput)
+                </td>
+            </tr>
+            <tr>
+                <td>Country (Id will be assigned):
+                </td>
+                <td>
+                    @Html.ObservableControlFor(model => model.CountryId, ControlTypeConstants.DropDownList,
+                    new
+                    {
+                        data_bind = "options: Person.Countries, optionsCaption: 'Please Choose', optionsText: 'Name', optionsValue: 'Id', value: Person.ViewModel.CountryId"
+                    })
+                </td>
+            </tr>
+            <tr>
+                <td>Country (Object will be assigned):
+                </td>
+                <td>
+                    @Html.ObservableControlFor(model => model.CountryId, ControlTypeConstants.DropDownList,
+                    new
+                    {
+                        data_bind = "options: Person.Countries, optionsCaption: 'Please Choose', optionsText: 'Name', value: Person.ViewModel.Country"
+                    })
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <br />
+    <input id="Save" type="submit" value="Save" />
+    <input id="Hide" type="button" value="hide" />
+    <div >
+        <ul data-bind="foreach: Person.Countries">
+            <li data-bind="text: Name, value: Id"></li>
+        </ul>
+    </div>
+</form> 
