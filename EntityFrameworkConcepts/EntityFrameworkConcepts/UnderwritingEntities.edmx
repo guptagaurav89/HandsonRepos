@@ -5,15 +5,40 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="UnderwritingEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="claimHeader">
+          <Key>
+            <PropertyRef Name="claimheaderid" />
+          </Key>
+          <Property Name="claimheaderid" Type="int" Nullable="false" />
+          <Property Name="claimreference" Type="nvarchar" MaxLength="50" />
+          <Property Name="headerid" Type="int" />
+        </EntityType>
         <EntityType Name="header">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="HeaderId" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="HeaderId" Type="int" Nullable="false" />
           <Property Name="PolicyReference" Type="varchar" MaxLength="10" Nullable="false" />
         </EntityType>
+        <Association Name="FK__claimHead__heade__36B12243">
+          <End Role="header" Type="Self.header" Multiplicity="0..1" />
+          <End Role="claimHeader" Type="Self.claimHeader" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="header">
+              <PropertyRef Name="HeaderId" />
+            </Principal>
+            <Dependent Role="claimHeader">
+              <PropertyRef Name="headerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="UnderwritingEntitiesStoreContainer">
+          <EntitySet Name="claimHeader" EntityType="Self.claimHeader" Schema="claims" store:Type="Tables" />
           <EntitySet Name="header" EntityType="Self.header" Schema="uw" store:Type="Tables" />
+          <AssociationSet Name="FK__claimHead__heade__36B12243" Association="Self.FK__claimHead__heade__36B12243">
+            <End Role="header" EntitySet="header" />
+            <End Role="claimHeader" EntitySet="claimHeader" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -21,14 +46,32 @@
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="UnderwritingEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
         <EntityContainer Name="UnderwritingEntitiesContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="headers" EntityType="UnderwritingEntities.header" />
+          <EntitySet Name="claimHeaders" EntityType="UnderwritingEntities.claimHeader" />
+          <AssociationSet Name="FK__claimHead__heade__36B12243" Association="UnderwritingEntities.FK__claimHead__heade__36B12243">
+            <End Role="header" EntitySet="headers" />
+            <End Role="claimHeader" EntitySet="claimHeaders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="header">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Key>            
+            <PropertyRef Name="HeaderId" />
+          </Key>          
           <Property Name="PolicyReference" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="HeaderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="claimHeaders" Relationship="UnderwritingEntities.FK__claimHead__heade__36B12243" FromRole="header" ToRole="claimHeader" />
         </EntityType>
+        <EntityType Name="claimHeader">
+          <Key>
+            <PropertyRef Name="claimheaderid" />
+          </Key>
+          <Property Name="claimheaderid" Type="Int32" Nullable="false" />
+          <Property Name="claimreference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="header" Relationship="UnderwritingEntities.FK__claimHead__heade__36B12243" FromRole="claimHeader" ToRole="header" />
+        </EntityType>
+        <Association Name="FK__claimHead__heade__36B12243">
+          <End Type="UnderwritingEntities.header" Role="header" Multiplicity="0..1" />
+          <End Type="UnderwritingEntities.claimHeader" Role="claimHeader" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -40,11 +83,28 @@
           <EntitySetMapping Name="headers">
             <EntityTypeMapping TypeName="UnderwritingEntities.header">
               <MappingFragment StoreEntitySet="header">
+                <ScalarProperty Name="HeaderId" ColumnName="HeaderId" />
                 <ScalarProperty Name="PolicyReference" ColumnName="PolicyReference" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="claimHeaders">
+            <EntityTypeMapping TypeName="UnderwritingEntities.claimHeader">
+              <MappingFragment StoreEntitySet="claimHeader">
+                <ScalarProperty Name="claimreference" ColumnName="claimreference" />
+                <ScalarProperty Name="claimheaderid" ColumnName="claimheaderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK__claimHead__heade__36B12243" TypeName="UnderwritingEntities.FK__claimHead__heade__36B12243" StoreEntitySet="claimHeader">
+            <EndProperty Name="claimHeader">
+              <ScalarProperty Name="claimheaderid" ColumnName="claimheaderid" />
+            </EndProperty>
+            <EndProperty Name="header">
+              <ScalarProperty Name="HeaderId" ColumnName="headerid" />
+            </EndProperty>
+            <Condition ColumnName="headerid" IsNull="false" />
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -14,7 +14,16 @@ namespace EntityFrameworkConcepts
     
     public partial class header
     {
-        public int Id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public header()
+        {
+            this.claimHeaders = new HashSet<claimHeader>();
+        }
+    
         public string PolicyReference { get; set; }
+        public int HeaderId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<claimHeader> claimHeaders { get; set; }
     }
 }

@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="7b93945e6f5a431e8d2e52656b336f2f" Name="Diagram1" >
         <EntityTypeShape EntityType="UnderwritingEntities.header" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UnderwritingEntities.claimHeader" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="UnderwritingEntities.FK__claimHead__heade__36B12243" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
