@@ -8,13 +8,13 @@ namespace ThreadingApplication
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Start Threading App");
-            ThreadApp tapp = new ThreadApp(3);
-            tapp.Execute();
+        //static void Main(string[] args)
+        //{
+        //    Console.WriteLine("Start Threading App");
+        //    ThreadApp tapp = new ThreadApp(3);
+        //    tapp.Execute();
 
-            Console.ReadKey();
-        }        
+        //    Console.ReadKey();
+        //}        
     }
 }
