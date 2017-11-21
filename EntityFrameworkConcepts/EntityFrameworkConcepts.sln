@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFrameworkConcepts", "EntityFrameworkConcepts\EntityFrameworkConcepts.csproj", "{A3080D50-7713-47DD-9BE1-BF1FED316F2D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EntityFramework4", "EntityFramework4", "{ACF7E7A4-8005-42E5-9DBE-206C7DAA62C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF4Concepts", "EF4Concepts\EF4Concepts.csproj", "{1D254922-29AB-41D9-B80F-A0864D7E5849}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{A3080D50-7713-47DD-9BE1-BF1FED316F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3080D50-7713-47DD-9BE1-BF1FED316F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3080D50-7713-47DD-9BE1-BF1FED316F2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D254922-29AB-41D9-B80F-A0864D7E5849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D254922-29AB-41D9-B80F-A0864D7E5849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D254922-29AB-41D9-B80F-A0864D7E5849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D254922-29AB-41D9-B80F-A0864D7E5849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1D254922-29AB-41D9-B80F-A0864D7E5849} = {ACF7E7A4-8005-42E5-9DBE-206C7DAA62C2}
 	EndGlobalSection
 EndGlobal

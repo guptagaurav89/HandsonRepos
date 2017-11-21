@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TestEFModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TestEFModelStoreContainer">
+          <EntitySet Name="Department" EntityType="TestEFModel.Store.Department" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Employee" EntityType="TestEFModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Departmen__DeptH__1920BF5C" Association="TestEFModel.Store.FK__Departmen__DeptH__1920BF5C">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Department" EntitySet="Department" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__deptId__24927208" Association="TestEFModel.Store.FK__Employee__deptId__24927208">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="numeric" Nullable="false" />
+          <Property Name="DeptName" Type="varchar" MaxLength="200" />
+          <Property Name="DeptHead" Type="numeric" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Empid" />
+          </Key>
+          <Property Name="Empid" Type="numeric" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="200" />
+          <Property Name="deptId" Type="numeric" />
+        </EntityType>
+        <Association Name="FK__Departmen__DeptH__1920BF5C">
+          <End Role="Employee" Type="TestEFModel.Store.Employee" Multiplicity="0..1" />
+          <End Role="Department" Type="TestEFModel.Store.Department" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Empid" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="DeptHead" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__deptId__24927208">
+          <End Role="Department" Type="TestEFModel.Store.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="TestEFModel.Store.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DeptId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="deptId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TestEFModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TestEFEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="TestEFModel.Department" />
+          <EntitySet Name="Employees" EntityType="TestEFModel.Employee" />
+          <AssociationSet Name="FK__Departmen__DeptH__1920BF5C" Association="TestEFModel.FK__Departmen__DeptH__1920BF5C">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Department" EntitySet="Departments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__deptId__24927208" Association="TestEFModel.FK__Employee__deptId__24927208">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DeptId" />
+          </Key>
+          <Property Name="DeptId" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="DeptName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Employee" Relationship="TestEFModel.FK__Departmen__DeptH__1920BF5C" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Employees" Relationship="TestEFModel.FK__Employee__deptId__24927208" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Empid" />
+          </Key>
+          <Property Name="Empid" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="EmpName" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Departments" Relationship="TestEFModel.FK__Departmen__DeptH__1920BF5C" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Department" Relationship="TestEFModel.FK__Employee__deptId__24927208" FromRole="Employee" ToRole="Department" />
+        </EntityType>
+        <Association Name="FK__Departmen__DeptH__1920BF5C">
+          <End Role="Employee" Type="TestEFModel.Employee" Multiplicity="0..1" />
+          <End Role="Department" Type="TestEFModel.Department" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__Employee__deptId__24927208">
+          <End Role="Department" Type="TestEFModel.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="TestEFModel.Employee" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TestEFModelStoreContainer" CdmEntityContainer="TestEFEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="TestEFModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+                <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="TestEFModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Empid" ColumnName="Empid" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK__Departmen__DeptH__1920BF5C" TypeName="TestEFModel.FK__Departmen__DeptH__1920BF5C" StoreEntitySet="Department">
+            <EndProperty Name="Employee">
+              <ScalarProperty Name="Empid" ColumnName="DeptHead" />
+            </EndProperty>
+            <EndProperty Name="Department">
+              <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+            </EndProperty>
+            <Condition ColumnName="DeptHead" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK__Employee__deptId__24927208" TypeName="TestEFModel.FK__Employee__deptId__24927208" StoreEntitySet="Employee">
+            <EndProperty Name="Department">
+              <ScalarProperty Name="DeptId" ColumnName="deptId" />
+            </EndProperty>
+            <EndProperty Name="Employee">
+              <ScalarProperty Name="Empid" ColumnName="Empid" />
+            </EndProperty>
+            <Condition ColumnName="deptId" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
