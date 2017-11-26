@@ -59,6 +59,7 @@
     <Compile Include="Artist.cs">
       <DependentUpon>PADB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ComplexLinqQueries.cs" />
     <Compile Include="Genre.cs">
       <DependentUpon>PADB.tt</DependentUpon>
     </Compile>
