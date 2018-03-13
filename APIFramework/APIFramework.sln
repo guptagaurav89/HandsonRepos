@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIFramework.Main", "APIFra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIFramework.Module", "APIFramework.Module\APIFramework.Module.csproj", "{DD493596-5E7E-4257-B9A6-0CB6A34F5E00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIFramework.Commands", "APIFramework.Commands\APIFramework.Commands.csproj", "{60715288-B6F7-4906-BE39-E66501CFD69F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIFramework.References", "APIFramework.References\APIFramework.References.csproj", "{D96345F2-C2AF-4059-9A22-D2160CAB50AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{DD493596-5E7E-4257-B9A6-0CB6A34F5E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD493596-5E7E-4257-B9A6-0CB6A34F5E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD493596-5E7E-4257-B9A6-0CB6A34F5E00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60715288-B6F7-4906-BE39-E66501CFD69F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60715288-B6F7-4906-BE39-E66501CFD69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60715288-B6F7-4906-BE39-E66501CFD69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60715288-B6F7-4906-BE39-E66501CFD69F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D96345F2-C2AF-4059-9A22-D2160CAB50AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D96345F2-C2AF-4059-9A22-D2160CAB50AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D96345F2-C2AF-4059-9A22-D2160CAB50AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D96345F2-C2AF-4059-9A22-D2160CAB50AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

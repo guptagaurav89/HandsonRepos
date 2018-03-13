@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("APIFramework.Main")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Xchanging")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("APIFramework.Main")]
-[assembly: AssemblyCopyright("Copyright © Xchanging 2018")]
+[assembly: AssemblyCopyright("Copyright © 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

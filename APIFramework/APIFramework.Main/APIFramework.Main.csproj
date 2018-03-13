@@ -83,6 +83,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\APIFramework.Commands\APIFramework.Commands.csproj">
+      <Project>{60715288-B6F7-4906-BE39-E66501CFD69F}</Project>
+      <Name>APIFramework.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\APIFramework.Module\APIFramework.Module.csproj">
       <Project>{dd493596-5e7e-4257-b9a6-0cb6a34f5e00}</Project>
       <Name>APIFramework.Module</Name>

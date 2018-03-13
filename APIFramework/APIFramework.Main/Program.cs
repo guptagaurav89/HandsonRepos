@@ -1,4 +1,6 @@
-﻿using APIFramework.Unity;
+﻿using APIFramework.Commands;
+using APIFramework.Processing;
+using APIFramework.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,9 @@ namespace APIFramework.Main
         {
             SetupContainer(IoC.Container);
             Console.WriteLine("hello world");
+            FirstCommand command = new FirstCommand();
+            IProcessCommands<FirstCommand> commandProcessor = IoC.Container.Resolve<IProcessCommands<FirstCommand>>();
+            commandProcessor.Process(command);
             Console.ReadKey();
         }
 

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("APIFramework")]
+[assembly: AssemblyTitle("APIFramework.References")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("APIFramework")]
+[assembly: AssemblyProduct("APIFramework.References")]
 [assembly: AssemblyCopyright("Copyright © 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d0e8d97f-1b8f-4e22-8faa-f853cc94b765")]
+[assembly: Guid("d96345f2-c2af-4059-9a22-d2160cab50ad")]
 
 // Version information for an assembly consists of the following four values:
 //
