@@ -91,6 +91,10 @@
       <Project>{dd493596-5e7e-4257-b9a6-0cb6a34f5e00}</Project>
       <Name>APIFramework.Module</Name>
     </ProjectReference>
+    <ProjectReference Include="..\APIFramework.References\APIFramework.References.csproj">
+      <Project>{D96345F2-C2AF-4059-9A22-D2160CAB50AD}</Project>
+      <Name>APIFramework.References</Name>
+    </ProjectReference>
     <ProjectReference Include="..\APIFramework\APIFramework.csproj">
       <Project>{d0e8d97f-1b8f-4e22-8faa-f853cc94b765}</Project>
       <Name>APIFramework</Name>

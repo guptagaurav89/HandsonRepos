@@ -42,12 +42,7 @@
   <ItemGroup>
     <Compile Include="FirstReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\APIFramework\APIFramework.csproj">
-      <Project>{d0e8d97f-1b8f-4e22-8faa-f853cc94b765}</Project>
-      <Name>APIFramework</Name>
-    </ProjectReference>
+    <Compile Include="Reference.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

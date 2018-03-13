@@ -30,8 +30,8 @@ namespace APIFramework.Module
 
         protected override Task OnProcessingAsync(FirstCommand command)
         {
-            var reference = new FirstReference();
-            reference.ReferenceIdentifier = "First";
+            //Reference<Database> reference = new FirstReference() as Reference<Database>;
+            //reference.ReferenceIdentifier = "First";
             var referenceParams = new DefaultDatabaseReferenceParameters
             {
                 Data = new DatabaseParameters
@@ -40,7 +40,7 @@ namespace APIFramework.Module
                 }
             };
 
-            DatabaseManager.Handle(reference, referenceParams);
+            DatabaseManager.Handle(command.FirstRefenceProp, referenceParams);
             var taskCompletionSource = new TaskCompletionSource();
             taskCompletionSource.SetResult();
             return taskCompletionSource.Task;

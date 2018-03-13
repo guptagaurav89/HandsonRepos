@@ -1,5 +1,6 @@
 ﻿using APIFramework.Commands;
 using APIFramework.Processing;
+using APIFramework.References;
 using APIFramework.Unity;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace APIFramework.Main
         {
             SetupContainer(IoC.Container);
             Console.WriteLine("hello world");
-            FirstCommand command = new FirstCommand();
+            FirstCommand command = new FirstCommand() { FirstRefenceProp = new FirstReference() { ReferenceIdentifier = "First" } };
             IProcessCommands<FirstCommand> commandProcessor = IoC.Container.Resolve<IProcessCommands<FirstCommand>>();
             commandProcessor.Process(command);
             Console.ReadKey();
