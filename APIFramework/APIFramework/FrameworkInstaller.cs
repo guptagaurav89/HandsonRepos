@@ -1,4 +1,5 @@
-﻿using APIFramework.Processing;
+﻿using APIFramework.Operations.Functions;
+using APIFramework.Processing;
 using APIFramework.ReferenceHandling;
 using APIFramework.ReferenceHandling.Database;
 using APIFramework.Unity;
@@ -20,6 +21,8 @@ namespace APIFramework
             container.RegisterType<IResolveGenericTypes, UnityGenericTypeResolver>(new HierarchicalLifetimeManager());
             container.RegisterType<IManageReference, DefaultDatabaseReferenceManager>();
 
+            container.RegisterType<ICreateFunctions, DefaultFunctionFactory>();
+
             var allClasses = AllClasses.FromAssemblies(typeof(FrameworkInstaller).Assembly);
             var handlerTypes = allClasses.Where(t => typeof(IHandleReferences).IsAssignableFrom(t)).ToArray();
 
@@ -30,6 +33,12 @@ namespace APIFramework
             var commandProcessors = allClasses.Where(t => !t.IsInterface && !t.IsAbstract && t.GetInterfaces().Any(i => i.IsGenericType && typeof(IProcessCommands<>).IsAssignableFrom(i.GetGenericTypeDefinition())));
             container.RegisterTypes(commandProcessors, t => t.GetInterfaces().Where(i => i.IsGenericType && typeof(IProcessCommands<>).IsAssignableFrom(i.GetGenericTypeDefinition())));
 
+            var operations = allClasses.Where(t => !t.IsInterface && !t.IsAbstract && t.GetInterfaces().Any(i => i.IsGenericType && typeof(IFunction<>).IsAssignableFrom(i.GetGenericTypeDefinition())));
+            container.RegisterTypes(operations, t => t.GetInterfaces().Where(i => i.IsGenericType && typeof(IFunction<>).IsAssignableFrom(i.GetGenericTypeDefinition())));
+
+            //var functionProviders = allClasses.Where(t => !t.IsInterface && !t.IsAbstract && t.GetInterfaces().Any(i => i.IsGenericType && typeof(IProvideFunctions<,,>).IsAssignableFrom(i.GetGenericTypeDefinition())));
+            //container.RegisterTypes(functionProviders, t => t.GetInterfaces().Where(i => i.IsGenericType && typeof(IProvideFunctions<,,>).IsAssignableFrom(i.GetGenericTypeDefinition())));
+                       
         }
     }
 }

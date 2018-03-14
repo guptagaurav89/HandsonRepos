@@ -103,6 +103,13 @@
     <Compile Include="FrameworkInstaller.cs" />
     <Compile Include="IoC.cs" />
     <Compile Include="IReferenceParameter.cs" />
+    <Compile Include="Operations\DefaultFunctions\DefaultDatabaseReferenceFunction.cs" />
+    <Compile Include="Operations\DefaultFunctions\Parameters\GetDatabaseReferenceParameters.cs" />
+    <Compile Include="Operations\Functions\BaseFunction.cs" />
+    <Compile Include="Operations\Functions\DefaultFunctionFactory.cs" />
+    <Compile Include="Operations\Functions\ICreateFunctions.cs" />
+    <Compile Include="Operations\Functions\IFunction.cs" />
+    <Compile Include="Operations\Functions\IFunctionParameters.cs" />
     <Compile Include="Processing\BaseCommandProcessor.cs" />
     <Compile Include="Processing\IProcessCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,9 +138,7 @@
       <Name>APIFramework.References</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Operations\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
