@@ -37,6 +37,7 @@ namespace APIFramework.Module
 
         protected override Task OnProcessingAsync(FirstCommand command)
         {
+            Console.WriteLine("First Command Processor Called");
             //Reference<Database> reference = new FirstReference() as Reference<Database>;
             //reference.ReferenceIdentifier = "First";
             if (command.FirstRefenceProp != null)

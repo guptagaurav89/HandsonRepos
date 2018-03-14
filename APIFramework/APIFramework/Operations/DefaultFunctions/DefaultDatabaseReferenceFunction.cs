@@ -37,6 +37,7 @@ namespace APIFramework.Operations.DefaultFunctions
 
         protected override void OnProcessing()
         {
+            Console.WriteLine("Resolving Reference Handler for Reference" + Parameters.Reference);
             var referenceParams = new DefaultDatabaseReferenceParameters
             {
                 Data = new DatabaseParameters

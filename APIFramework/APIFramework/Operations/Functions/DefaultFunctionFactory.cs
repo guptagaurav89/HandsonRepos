@@ -18,7 +18,7 @@ namespace APIFramework.Operations.Functions
         {
             if (_typeFactory.IsRegistered(typeof(IFunction<TParameters>)))
             {
-                Console.WriteLine("Attempting to resolve '{0}'", typeof(IFunction<TParameters>));
+                Console.WriteLine("Attempting to resolve Function for'{0}'", typeof(TParameters));
 
                 var operation = _typeFactory.Resolve<IFunction<TParameters>>();
                 operation.Parameters = parameters;
