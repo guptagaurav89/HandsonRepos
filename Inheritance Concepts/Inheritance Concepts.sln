@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InheritanceConcepts.csproj", "InheritanceConcepts.csproj\InheritanceConcepts.csproj.csproj", "{A58454D8-C47A-413D-9D4B-2DD82520317D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InheritanceConcepts", "InheritanceConcepts\InheritanceConcepts.csproj", "{46ECE572-DCAC-4831-9236-B84BCF4B8B30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A58454D8-C47A-413D-9D4B-2DD82520317D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A58454D8-C47A-413D-9D4B-2DD82520317D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A58454D8-C47A-413D-9D4B-2DD82520317D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A58454D8-C47A-413D-9D4B-2DD82520317D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46ECE572-DCAC-4831-9236-B84BCF4B8B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46ECE572-DCAC-4831-9236-B84BCF4B8B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46ECE572-DCAC-4831-9236-B84BCF4B8B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46ECE572-DCAC-4831-9236-B84BCF4B8B30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
