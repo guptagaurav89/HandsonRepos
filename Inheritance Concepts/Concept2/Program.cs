@@ -7,7 +7,7 @@ namespace Concept2
         static void Main(string[] args)
         {
             Basechild fc = new Firstchild();
-            fc.Display();
+            fc.Display();            
             Basechild sc = new Secondchild();
             sc.Display();
             Firstchild sfc = new Secondchild();
@@ -17,18 +17,21 @@ namespace Concept2
 
     public class Basechild
     {
-        public virtual void Display(){Console.WriteLine("Basechild");}
+        public virtual void Display(){Console.WriteLine("Basechild"); DisplayStatic();}
+
+        public static void DisplayStatic(){Console.WriteLine("Base Static");}
+        //Static Method cannot be virtual, abstract or override
     }
-    public class Firstchild : Basechild
+    /*Sealed*/ public class Firstchild : Basechild 
+    //Sealed Class will not able to inherited further
     {
-        public new virtual void Display()
+        // public new virtual void Display()
+        public override void Display()
         {
             Console.WriteLine("FirstChild");
+            DisplayStatic();
         }
-        // public override void Display()
-        // {
-        //     Console.WriteLine("FirstChild");
-        // }
+        public new static void DisplayStatic(){Console.WriteLine("FirstChild Static");}
     }
 
     public class Secondchild : Firstchild
